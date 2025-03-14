@@ -36,3 +36,11 @@ yarn-error.*
 *.tsbuildinfo
 
 app-example
+
+# Evita subir dependencias y archivos innecesarios
+node_modules/
+.expo/
+.expo-shared/
+.env
+.idea/
+.vscode/
