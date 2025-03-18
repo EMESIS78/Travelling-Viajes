@@ -3,18 +3,11 @@ import { View, SafeAreaView, StyleSheet, ScrollView } from 'react-native';
 import Carrusel from '../components/Carrusel';
 import Header from '../components/Header';
 import PopularTrips from '../components/PopularTrips';
+import AppNavigator from '../Navigations/navigationTypes';
 
 
 const Index = () => {
-  return (
-    <SafeAreaView style={styles.container}>
-      <ScrollView>
-        <Header />
-        <Carrusel />
-        <PopularTrips />
-      </ScrollView>
-    </SafeAreaView>
-  );
+  return <AppNavigator />;
 };
 
 export default Index;

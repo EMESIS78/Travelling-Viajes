@@ -3,6 +3,7 @@ import { View, Text, FlatList, Dimensions, Animated, StyleSheet, TouchableOpacit
 import { FontAwesome5 } from '@expo/vector-icons';
 import { useNavigation, useRoute } from '@react-navigation/native';
 
+
 const { width } = Dimensions.get('window');
 const ITEM_WIDTH = width * 0.4;
 const ITEM_HEIGHT = 130;
@@ -18,8 +19,7 @@ const Carrusel = () => {
     const scrollX = useRef(new Animated.Value(0)).current;
     const navigation = useNavigation();
     const route = useRoute(); 
-    console.log('Ruta actual:', route.name);
-    console.log('Navigation Object:', navigation);
+
 
     return (
         <View style={styles.container}>
@@ -37,7 +37,10 @@ const Carrusel = () => {
                 renderItem={({ item }) => (
                     <TouchableOpacity
                         style={[styles.card, { backgroundColor: item.color }]}
-                        onPress={() => navigation.navigate(item.screen)}// 🔹 Navega a la pantalla correspondiente
+                        onPress={() => {
+                            console.log('Intentando navegar a:', item.screen);
+                            navigation.navigate(item.screen);
+                        }}
                     >
                         <View style={styles.iconContainer}>
                             <FontAwesome5 name={item.icon} size={28} color="white" />
