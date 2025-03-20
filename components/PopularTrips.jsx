@@ -1,3 +1,4 @@
+import { useNavigation, useRoute } from "@react-navigation/native";
 import React from "react";
 import { View, Text, FlatList, Image, StyleSheet, TouchableOpacity, Dimensions } from "react-native";
 
@@ -10,6 +11,7 @@ const trips = [
         route: "Lima - Cusco",
         date: "Lunes 30, 10:00 am",
         image: require("../assets/images/machu-picchu.jpeg"),
+        screen: "TourDetail",
     },
     {
         id: "2",
@@ -21,6 +23,10 @@ const trips = [
 ];
 
 const PopularTrips = () => {
+
+    const navigation = useNavigation();
+    const route = useRoute(); 
+    
     return (
         <View style={styles.container}>
             <Text style={styles.title}>Viajes populares</Text>
@@ -40,7 +46,14 @@ const PopularTrips = () => {
                             <Text style={styles.route}>{item.route}</Text>
                             <Text style={styles.date}>{item.date}</Text>
                             <TouchableOpacity style={styles.button}>
-                                <Text style={styles.buttonText}>Tomar vuelo</Text>
+                                <Text 
+                                    style={styles.buttonText}
+                                    
+                                    onPress={() => {
+                                        console.log('Intentando navegar a:', item.screen);
+                                        navigation.navigate(item.screen);
+                                    }}    
+                                >Tomar vuelo</Text>
                             </TouchableOpacity>
                         </View>
                     </View>
