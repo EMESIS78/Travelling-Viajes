@@ -8,6 +8,7 @@ import AlojamientosScreen from '../components/AlojamientosScreen';
 import ToursScreen from '../components/ToursScreen';
 import TransporteScreen from '../components/TransporteScreen';
 import RestaurantesScreen from '../components/RestaurantesScreen';
+import TourDetail from './../components/TourDetail';
 
 export type StackParamList = {
     Home: undefined;
@@ -15,6 +16,7 @@ export type StackParamList = {
     ToursScreen: undefined;
     TransporteScreen: undefined;
     RestaurantesScreen: undefined;
+    TourDetail: undefined;
 };
 
 // Crear Stack Navigator
@@ -29,6 +31,7 @@ const StackNavigator  = () => {
             <Stack.Screen name="ToursScreen" component={ToursScreen} />
             <Stack.Screen name="TransporteScreen" component={TransporteScreen} />
             <Stack.Screen name="RestaurantesScreen" component={RestaurantesScreen} />
+            <Stack.Screen name="TourDetail" component={TourDetail} />
         </Stack.Navigator>
 
     );
@@ -44,6 +47,7 @@ const DrawerNavigator = () => {
       <Drawer.Screen name="Tours" component={ToursScreen} options={{ title: "Explorar Tours" }} />
       <Drawer.Screen name="Transporte" component={TransporteScreen} />
       <Drawer.Screen name="Restaurantes" component={RestaurantesScreen} />
+      
     </Drawer.Navigator>
   );
 };
