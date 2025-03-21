@@ -1,6 +1,8 @@
 import { useNavigation, useRoute } from "@react-navigation/native";
 import React from "react";
 import { View, Text, FlatList, Image, StyleSheet, TouchableOpacity, Dimensions } from "react-native";
+import TourDetail from "./TourDetail";
+
 
 const { width } = Dimensions.get("window");
 
@@ -11,7 +13,7 @@ const trips = [
         route: "Lima - Cusco",
         date: "Lunes 30, 10:00 am",
         image: require("../assets/images/machu-picchu.jpeg"),
-        screen: "TourDetail",
+        screen: "TourDetail", component:{TourDetail},
     },
     {
         id: "2",
