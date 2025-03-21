@@ -73,13 +73,7 @@ const OnboardingScreen = () => {
       )}
 
       <View style={styles.buttonContainer}>
-        {/* Botón "Next" para avanzar */}
-        {activeSlide < slides.length - 1 && (
-          <TouchableOpacity style={styles.button} onPress={() => setActiveSlide(activeSlide + 1)}>
-            <Text style={styles.buttonText}>Next</Text>
-          </TouchableOpacity>
-        )}
-
+        
         {/* Botón "Get Started" visible siempre */}
         <TouchableOpacity
           style={styles.button}
