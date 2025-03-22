@@ -14,7 +14,7 @@ const { width } = Dimensions.get("window");
 
 const TourDetail = () => {
   const [activeTab, setActiveTab] = useState("description");
-
+  // comentario
   const trips = [
     {
       id: "1",
