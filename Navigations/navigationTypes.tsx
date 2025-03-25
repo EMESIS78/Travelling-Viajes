@@ -71,15 +71,15 @@ const StackNavigator = () => {
 
     <Stack.Navigator initialRouteName="OnboardingScreen">
 
-      <Stack.Screen 
-        name="OnboardingScreen" 
-        component={OnboardingScreen} 
-        options={{ headerShown: false }} 
+      <Stack.Screen
+        name="OnboardingScreen"
+        component={OnboardingScreen}
+        options={{ headerShown: false }}
       />
-      <Stack.Screen 
-        name="Home" 
-        component={HomeScreen} 
-        options={{ headerShown: false }} 
+      <Stack.Screen
+        name="Home"
+        component={HomeScreen}
+        options={{ headerShown: false }}
       />
       <Stack.Screen name="AlojamientosScreen" component={AlojamientosScreen} />
       <Stack.Screen name="ToursScreen" component={ToursScreen} />
@@ -115,15 +115,15 @@ const AppNavigator = () => {
     );
   }
   return (
-    <Stack.Navigator initialRouteName={onboardingSeen  ? 'Main' : 'OnboardingScreen'}>
-        <Stack.Screen name="AlojamientosScreen" component={AlojamientosScreen} />
+    <Stack.Navigator initialRouteName={onboardingSeen ? 'Main' : 'OnboardingScreen'}>
+      <Stack.Screen name="AlojamientosScreen" component={AlojamientosScreen} />
       <Stack.Screen name="ToursScreen" component={ToursScreen} />
       <Stack.Screen name="TransporteScreen" component={TransporteScreen} />
       <Stack.Screen name="RestaurantesScreen" component={RestaurantesScreen} />
-        <Stack.Screen name="OnboardingScreen" component={OnboardingScreen} options={{ headerShown: false }} />
-        <Stack.Screen name="Main" component={BottomTabsNavigator} options={{ headerShown: false }} />
-        <Stack.Screen name="TourDetail" component={TourDetail} />
-      </Stack.Navigator>
+      <Stack.Screen name="OnboardingScreen" component={OnboardingScreen} options={{ headerShown: false }} />
+      <Stack.Screen name="Main" component={BottomTabsNavigator} options={{ headerShown: false }} />
+      <Stack.Screen name="TourDetail" component={TourDetail} />
+    </Stack.Navigator>
   );
 };
 
