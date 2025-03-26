@@ -9,7 +9,7 @@ const alojamientos = [
     ubicacion: 'Plaza de Armas, Arequipa',
     descripcion: 'Hotel histórico con vista a la Plaza de Armas, ubicado en un edificio colonial del siglo XIX. Ofrece habitaciones elegantes con decoración tradicional y vistas panorámicas al Misti.',
     precio: '$150/noche',
-    imagen: require('../assets/images/hotel-arequipa.jpg'),
+    imagen: require('../../assets/images/hotel-arequipa.jpg'),
     estrellas: 5,
     caracteristicas: ['WiFi', 'Piscina', 'Restaurante']
   },
@@ -19,7 +19,7 @@ const alojamientos = [
     ubicacion: 'Centro Histórico, Arequipa',
     descripcion: 'Hotel boutique en una mansión colonial restaurada, con patios interiores y jardines. Ubicado cerca de la Plaza de Armas y el Monasterio de Santa Catalina.',
     precio: '$120/noche',
-    imagen: require('../assets/images/casa-andina-premium-arequipa.jpg'),
+    imagen: require('../../assets/images/casa-andina-premium-arequipa.jpg'),
     estrellas: 4,
     caracteristicas: ['WiFi', 'Spa', 'Bar']
   },
@@ -29,7 +29,7 @@ const alojamientos = [
     ubicacion: 'Valle del Colca, Arequipa',
     descripcion: 'Hotel con vista al Valle del Colca, perfecto para explorar el Cañón del Colca y los cóndores. Ofrece excursiones guiadas y actividades al aire libre.',
     precio: '$180/noche',
-    imagen: require('../assets/images/arequipa-sonesta posadas del inca-.jpg'),
+    imagen: require('../../assets/images/arequipa-sonesta posadas del inca-.jpg'),
     estrellas: 4,
     caracteristicas: ['WiFi', 'Excursiones', 'Restaurante']
   }

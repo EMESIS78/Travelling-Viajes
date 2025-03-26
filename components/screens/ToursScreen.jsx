@@ -10,7 +10,7 @@ const tours = [
     descripcion: 'Excursión de día completo al Valle del Colca, incluye visita al Mirador de los Cóndores, pueblos tradicionales y baños termales.',
     precio: '$80/persona',
     duracion: '1 día',
-    imagen: require('../assets/images/colca-canyon.jpg'),
+    imagen: require('../../assets/images/colca-canyon.jpg'),
     caracteristicas: ['Guía', 'Transporte', 'Almuerzo']
   },
   {
@@ -20,7 +20,7 @@ const tours = [
     descripcion: 'Recorrido por los principales atractivos de la Ciudad Blanca: Plaza de Armas, Monasterio de Santa Catalina, Iglesia de la Compañía y más.',
     precio: '$45/persona',
     duracion: '4 horas',
-    imagen: require('../assets/images/arequipa-city.jpg'),
+    imagen: require('../../assets/images/arequipa-city.jpg'),
     caracteristicas: ['Guía', 'Entradas', 'Transporte']
   },
   {
@@ -30,7 +30,7 @@ const tours = [
     descripcion: 'Aventura de dos días para escalar el Volcán Misti, incluye equipo de montaña y guía especializado.',
     precio: '$150/persona',
     duracion: '2 días',
-    imagen: require('../assets/images/misti-volcano.jpg'),
+    imagen: require('../../assets/images/misti-volcano.jpg'),
     caracteristicas: ['Guía', 'Equipo', 'Campamento']
   }
 ]

@@ -10,7 +10,7 @@ const restaurantes = [
     descripcion: 'Elegante restaurante especializado en carnes y mariscos, con una fusión única de sabores peruanos y europeos.',
     precio: '$$$',
     horario: '12:00 - 23:00',
-    imagen: require('../assets/images/zigzag.jpg'),
+    imagen: require('../../assets/images/zigzag.jpg'),
     caracteristicas: ['Reservas', 'WiFi', 'Terraza'],
     calificacion: 4.8
   },
@@ -21,7 +21,7 @@ const restaurantes = [
     descripcion: 'Famoso por sus picanterías y rocoto relleno. Ambiente tradicional arequipeño con música en vivo.',
     precio: '$$',
     horario: '11:00 - 22:00',
-    imagen: require('../assets/images/palomino.jpg'),
+    imagen: require('../../assets/images/palomino.jpg'),
     caracteristicas: ['Música en vivo', 'Parqueo', 'Familiar'],
     calificacion: 4.5
   },
@@ -32,7 +32,7 @@ const restaurantes = [
     descripcion: 'Restaurante del reconocido chef Gastón Acurio, especializado en reinterpretaciones de la cocina peruana.',
     precio: '$$$',
     horario: '12:00 - 23:00',
-    imagen: require('../assets/images/chicha.jpg'),
+    imagen: require('../../assets/images/chicha.jpg'),
     caracteristicas: ['Reservas', 'Bar', 'Vista'],
     calificacion: 4.7
   }

@@ -10,7 +10,7 @@ const transportes = [
     descripcion: 'Servicio de transfer privado desde/hacia el Aeropuerto Internacional Alfredo Rodríguez Ballón.',
     precio: '$25',
     duracion: '30 min',
-    imagen: require('../assets/images/transfer-airport.jpg'),
+    imagen: require('../../assets/images/transfer-airport.jpg'),
     caracteristicas: ['WiFi', 'Aire Acondicionado', 'Maletero']
   },
   {
@@ -20,7 +20,7 @@ const transportes = [
     descripcion: 'Servicio de bus turístico para recorrer los principales puntos de la ciudad y alrededores.',
     precio: '$15',
     duracion: '4 horas',
-    imagen: require('../assets/images/tourist-bus.jpg'),
+    imagen: require('../../assets/images/tourist-bus.jpg'),
     caracteristicas: ['Guía', 'Paradas', 'Aire Acondicionado']
   },
   {
@@ -30,7 +30,7 @@ const transportes = [
     descripcion: 'Servicio de taxi seguro con conductores certificados y vehículos modernos.',
     precio: '$10',
     duracion: 'Según destino',
-    imagen: require('../assets/images/safe-taxi.jpg'),
+    imagen: require('../../assets/images/safe-taxi.jpg'),
     caracteristicas: ['Seguro', 'GPS', '24/7']
   }
 ]

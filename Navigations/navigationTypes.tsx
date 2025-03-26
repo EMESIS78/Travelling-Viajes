@@ -8,10 +8,11 @@ import { NavigationContainer } from '@react-navigation/native';
 import { Ionicons } from '@expo/vector-icons';
 
 import HomeScreen from '../app/views/HomeScreen';
-import AlojamientosScreen from '../components/AlojamientosScreen';
-import ToursScreen from '../components/ToursScreen';
-import TransporteScreen from '../components/TransporteScreen';
-import RestaurantesScreen from '../components/RestaurantesScreen';
+import AlojamientosScreen from '../components/screens/AlojamientosScreen';
+import ToursScreen from '../components/screens/ToursScreen';
+import TransporteScreen from '../components/screens/TransporteScreen';
+import RestaurantesScreen from '../components/screens/RestaurantesScreen';
+import LoginScreen from '../components/screens/LoginScreen';
 import TourDetail from './../components/TourDetail';
 import OnboardingScreen from './../components/OnboardingScreen';
 
