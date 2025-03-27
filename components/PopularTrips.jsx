@@ -48,22 +48,24 @@ const styles = StyleSheet.create({
     container: {
         marginTop: 20,
         paddingLeft: 15,
+        backgroundColor: '#121212'
     },
     header: {
         fontSize: 22,
         fontWeight: "bold",
         marginBottom: 10,
+        color: '#fff',
     },
     card: {
-        backgroundColor: "#fff",
+        backgroundColor: "#1f1f1f",
         borderRadius: 10,
         padding: 10,
         marginRight: 15,
         width: 200,
         shadowColor: "#000",
         shadowOffset: { width: 0, height: 2 },
-        shadowOpacity: 0.1,
-        shadowRadius: 4,
+        shadowOpacity: 0.2,
+        shadowRadius: 6,
         elevation: 5,
     },
     image: {
@@ -75,6 +77,7 @@ const styles = StyleSheet.create({
         fontSize: 16,
         fontWeight: "bold",
         marginVertical: 5,
+        color: '#fff',
     },
     location: {
         fontSize: 14,
@@ -84,6 +87,7 @@ const styles = StyleSheet.create({
         fontSize: 14,
         fontWeight: "bold",
         marginTop: 5,
+        color: '#fff',
     },
     button: {
         marginTop: 10,
@@ -96,5 +100,12 @@ const styles = StyleSheet.create({
         color: "#fff",
         fontSize: 14,
         fontWeight: "bold",
+    },
+    emptyText: {
+        color: '#fff', // Texto blanco para cuando no hay destinos
+        fontSize: 16,
+        fontWeight: "bold",
+        textAlign: 'center',
+        marginTop: 20,
     },
 });

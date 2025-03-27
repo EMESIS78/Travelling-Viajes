@@ -31,25 +31,25 @@ const styles = StyleSheet.create({
         width: "100%",
         paddingHorizontal: width * 0.06,
         paddingTop: Platform.OS === "ios" ? height * 0.01 : height * 0.08,
-        backgroundColor: "#E5E5E5",
+        backgroundColor: "#333", // Fondo oscuro para el Header
         paddingBottom: height * 0.04,
     },
     welcomeText: {
-        fontSize: width * 0.07, // Aumento del tamaño de la fuente
+        fontSize: width * 0.07,
         fontWeight: "bold",
-        color: "#222", // Color más oscuro para mejor contraste
+        color: "#fff", // Texto blanco para buen contraste
         textAlign: "left",
-        marginBottom: height * 0.005, // Espaciado con el subtítulo
+        marginBottom: height * 0.005,
     },
     subText: {
         fontSize: width * 0.04,
-        color: "#666",
+        color: "#bbb", // Color más claro para el subtítulo
         marginBottom: height * 0.02,
     },
     searchContainer: {
         flexDirection: "row",
         alignItems: "center",
-        backgroundColor: "#F5F5F5",
+        backgroundColor: "#444", // Fondo oscuro para la barra de búsqueda
         borderRadius: 30,
         paddingVertical: height * 0.015,
         paddingHorizontal: width * 0.05,
@@ -65,6 +65,6 @@ const styles = StyleSheet.create({
     input: {
         flex: 1,
         fontSize: width * 0.045,
-        color: "#333",
+        color: "#fff", // Texto blanco en la barra de búsqueda
     },
 });
