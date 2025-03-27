@@ -24,6 +24,7 @@ export type StackParamList = {
   TransporteScreen: undefined;
   RestaurantesScreen: undefined;
   TourDetail: undefined;
+  Perfil: undefined;
 };
 
 // Crear Stack Navigator
@@ -48,6 +49,8 @@ const BottomTabsNavigator = () => {
             iconName = 'car-outline';
           } else if (route.name === 'Restaurantes') {
             iconName = 'restaurant-outline';
+          } else if (route.name === 'Perfil') {
+            iconName = 'person-outline';
           }
 
           return <Ionicons name={iconName as any} size={size} color={color} />;
@@ -62,6 +65,7 @@ const BottomTabsNavigator = () => {
       <Tab.Screen name="Tours" component={ToursScreen} />
       <Tab.Screen name="Transporte" component={TransporteScreen} />
       <Tab.Screen name="Restaurantes" component={RestaurantesScreen} />
+      <Tab.Screen name="Perfil" component={LoginScreen} />
     </Tab.Navigator>
   );
 };
@@ -124,6 +128,7 @@ const AppNavigator = () => {
       <Stack.Screen name="OnboardingScreen" component={OnboardingScreen} options={{ headerShown: false }} />
       <Stack.Screen name="Main" component={BottomTabsNavigator} options={{ headerShown: false }} />
       <Stack.Screen name="TourDetail" component={TourDetail} />
+      <Stack.Screen name="Perfil" component={LoginScreen} options={{ headerShown: false }} />
     </Stack.Navigator>
   );
 };
