@@ -81,8 +81,7 @@ const BottomTabsNavigator = () => {
         tabBarInactiveTintColor: 'gray',
         tabBarStyle: {
           backgroundColor: '#333', // Fondo oscuro para la barra de navegación
-          borderTopLeftRadius: 20,  // Bordes redondeados
-          borderTopRightRadius: 20,
+          paddingTop: 5,
           paddingBottom: 10,        // Espaciado extra para los iconos
         },
         headerShown: false, // Ocultar encabezado en tabs
