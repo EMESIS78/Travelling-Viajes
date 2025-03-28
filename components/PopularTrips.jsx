@@ -46,66 +46,62 @@ export default PopularTrips;
 
 const styles = StyleSheet.create({
     container: {
-        marginTop: 20,
-        paddingLeft: 15,
-        backgroundColor: '#121212'
+        flex: 1,
+        backgroundColor: '#121212', // Fondo oscuro
+        paddingTop: 20,
     },
     header: {
-        fontSize: 22,
-        fontWeight: "bold",
+        fontSize: 24,
+        fontWeight: 'bold',
+        color: '#FFFFFF', // Texto blanco
+        marginLeft: 20,
         marginBottom: 10,
-        color: '#fff',
     },
     card: {
-        backgroundColor: "#1f1f1f",
-        borderRadius: 10,
-        padding: 10,
+        backgroundColor: '#1e1e1e', // Fondo de la tarjeta oscuro
         marginRight: 15,
-        width: 200,
-        shadowColor: "#000",
-        shadowOffset: { width: 0, height: 2 },
-        shadowOpacity: 0.2,
-        shadowRadius: 6,
-        elevation: 5,
+        borderRadius: 10,
+        width: width * 0.6,
+        padding: 15,
+        alignItems: 'center',
     },
     image: {
-        width: "100%",
-        height: 120,
+        width: '100%',
+        height: 150,
         borderRadius: 10,
+        marginBottom: 10,
     },
     title: {
-        fontSize: 16,
-        fontWeight: "bold",
-        marginVertical: 5,
-        color: '#fff',
+        fontSize: 18,
+        fontWeight: 'bold',
+        color: '#FFFFFF', // Texto blanco para el título
+        marginBottom: 5,
     },
     location: {
         fontSize: 14,
-        color: "gray",
+        color: '#B0B0B0', // Texto gris para la ubicación
+        marginBottom: 5,
     },
     price: {
-        fontSize: 14,
-        fontWeight: "bold",
-        marginTop: 5,
-        color: '#fff',
+        fontSize: 16,
+        fontWeight: 'bold',
+        color: '#FFD700', // Texto dorado para el precio
+        marginBottom: 10,
     },
     button: {
-        marginTop: 10,
-        backgroundColor: "#ff5a5f",
-        paddingVertical: 8,
+        backgroundColor: '#FFD700', // Botón con fondo dorado
+        paddingVertical: 10,
+        paddingHorizontal: 20,
         borderRadius: 5,
-        alignItems: "center",
     },
     buttonText: {
-        color: "#fff",
-        fontSize: 14,
-        fontWeight: "bold",
+        fontSize: 16,
+        fontWeight: 'bold',
+        color: '#121212', // Texto oscuro para el botón
     },
     emptyText: {
-        color: '#fff', // Texto blanco para cuando no hay destinos
         fontSize: 16,
-        fontWeight: "bold",
+        color: '#B0B0B0',
         textAlign: 'center',
-        marginTop: 20,
     },
 });

@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import { ActivityIndicator, View } from 'react-native';
+import { ActivityIndicator, View, Animated } from 'react-native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 import { NavigationContainer } from '@react-navigation/native';
-
+import { useFocusEffect } from '@react-navigation/native';
 import { Ionicons } from '@expo/vector-icons';
 
 import HomeScreen from '../app/views/HomeScreen';
@@ -28,8 +28,33 @@ export type StackParamList = {
 
 // Crear Stack Navigator
 const Stack = createNativeStackNavigator();
+
+
 const Tab = createBottomTabNavigator();
 
+const AnimatedTabScreen: React.FC<{ component: React.ComponentType }> = ({ component: Component }) => {
+  const [fadeAnim] = useState(new Animated.Value(0)); // Iniciar la animación con opacidad 0
+
+  useFocusEffect(
+    React.useCallback(() => {
+      // Iniciar la animación de opacidad cuando la pantalla se enfoca
+      Animated.timing(fadeAnim, {
+        toValue: 1,  // Hacer que la pantalla se vuelva opaca
+        duration: 500, // Duración de la animación
+        useNativeDriver: true, // Usar el controlador nativo para el rendimiento
+      }).start();
+
+      // Resetear la animación al perder el enfoque
+      return () => fadeAnim.setValue(0);
+    }, [fadeAnim])
+  );
+
+  return (
+    <Animated.View style={{ flex: 1, opacity: fadeAnim }}>
+      <Component />
+    </Animated.View>
+  );
+};
 
 const BottomTabsNavigator = () => {
   return (
@@ -54,44 +79,24 @@ const BottomTabsNavigator = () => {
         },
         tabBarActiveTintColor: '#FFD700',
         tabBarInactiveTintColor: 'gray',
+        tabBarStyle: {
+          backgroundColor: '#333', // Fondo oscuro para la barra de navegación
+          borderTopLeftRadius: 20,  // Bordes redondeados
+          borderTopRightRadius: 20,
+          paddingBottom: 10,        // Espaciado extra para los iconos
+        },
         headerShown: false, // Ocultar encabezado en tabs
+        
       })}
     >
-      <Tab.Screen name="Inicio" component={HomeScreen} />
-      <Tab.Screen name="Alojamientos" component={AlojamientosScreen} />
-      <Tab.Screen name="Tours" component={ToursScreen} />
-      <Tab.Screen name="Transporte" component={TransporteScreen} />
-      <Tab.Screen name="Restaurantes" component={RestaurantesScreen} />
+      <Tab.Screen name="Inicio" component={() => <AnimatedTabScreen component={HomeScreen} />} />
+      <Tab.Screen name="Alojamientos" component={() => <AnimatedTabScreen component={AlojamientosScreen} />} />
+      <Tab.Screen name="Tours" component={() => <AnimatedTabScreen component={ToursScreen} />} />
+      <Tab.Screen name="Transporte" component={() => <AnimatedTabScreen component={TransporteScreen} />} />
+      <Tab.Screen name="Restaurantes" component={() => <AnimatedTabScreen component={RestaurantesScreen} />} />
     </Tab.Navigator>
   );
 };
-
-
-const StackNavigator = () => {
-  return (
-
-    <Stack.Navigator initialRouteName="OnboardingScreen">
-
-      <Stack.Screen
-        name="OnboardingScreen"
-        component={OnboardingScreen}
-        options={{ headerShown: false }}
-      />
-      <Stack.Screen
-        name="Home"
-        component={HomeScreen}
-        options={{ headerShown: false }}
-      />
-      <Stack.Screen name="AlojamientosScreen" component={AlojamientosScreen} />
-      <Stack.Screen name="ToursScreen" component={ToursScreen} />
-      <Stack.Screen name="TransporteScreen" component={TransporteScreen} />
-      <Stack.Screen name="RestaurantesScreen" component={RestaurantesScreen} />
-      <Stack.Screen name="TourDetail" component={TourDetail} />
-    </Stack.Navigator>
-
-  );
-};
-
 
 
 const AppNavigator = () => {
@@ -116,14 +121,19 @@ const AppNavigator = () => {
     );
   }
   return (
-    <Stack.Navigator initialRouteName={onboardingSeen ? 'Main' : 'OnboardingScreen'}>
-      <Stack.Screen name="AlojamientosScreen" component={AlojamientosScreen} />
-      <Stack.Screen name="ToursScreen" component={ToursScreen} />
-      <Stack.Screen name="TransporteScreen" component={TransporteScreen} />
-      <Stack.Screen name="RestaurantesScreen" component={RestaurantesScreen} />
+    <Stack.Navigator initialRouteName={onboardingSeen ? 'Main' : 'OnboardingScreen'}
+      screenOptions={{
+        animation: 'slide_from_right', // Aquí aplicamos la animación de deslizamiento
+      }}
+    >
       <Stack.Screen name="OnboardingScreen" component={OnboardingScreen} options={{ headerShown: false }} />
       <Stack.Screen name="Main" component={BottomTabsNavigator} options={{ headerShown: false }} />
-      <Stack.Screen name="TourDetail" component={TourDetail} />
+      <Stack.Screen name="TourDetail" component={TourDetail}
+        options={{
+          animation: 'fade_from_bottom', // Aquí agregamos una animación de desvanecimiento
+          headerShown: false,
+        }}
+      />
     </Stack.Navigator>
   );
 };

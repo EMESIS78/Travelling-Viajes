@@ -84,16 +84,16 @@ export default ToursScreen
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#f5f5f5',
+    backgroundColor: '#2A2A2A', // Dark background
   },
   header: {
     fontSize: 24,
     fontWeight: 'bold',
     padding: 15,
-    color: '#333',
+    color: '#FFD700', // Warm yellow for header
   },
   card: {
-    backgroundColor: 'white',
+    backgroundColor: '#333', // Dark card background
     marginHorizontal: 15,
     marginBottom: 15,
     borderRadius: 15,
@@ -125,28 +125,29 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     flex: 1,
     marginRight: 10,
+    color: '#FFD700', // Warm yellow for title
   },
   durationContainer: {
     flexDirection: 'row',
     alignItems: 'center',
-    backgroundColor: '#f0f0f0',
+    backgroundColor: '#FF6347', // Tomato red background for duration
     paddingHorizontal: 8,
     paddingVertical: 4,
     borderRadius: 12,
   },
   duration: {
     fontSize: 12,
-    color: '#666',
+    color: '#fff', // White text for duration
     marginLeft: 4,
   },
   location: {
     fontSize: 14,
-    color: '#666',
+    color: '#fff', // White text for location
     marginBottom: 8,
   },
   description: {
     fontSize: 14,
-    color: '#444',
+    color: '#DDD', // Light gray text for description
     lineHeight: 20,
     marginBottom: 10,
   },
@@ -156,7 +157,7 @@ const styles = StyleSheet.create({
     marginBottom: 10,
   },
   featureTag: {
-    backgroundColor: '#f0f0f0',
+    backgroundColor: '#444', // Darker background for features
     paddingHorizontal: 10,
     paddingVertical: 5,
     borderRadius: 15,
@@ -165,7 +166,7 @@ const styles = StyleSheet.create({
   },
   featureText: {
     fontSize: 12,
-    color: '#666',
+    color: '#FFD700', // Warm yellow text for features
   },
   priceContainer: {
     flexDirection: 'row',
@@ -175,16 +176,16 @@ const styles = StyleSheet.create({
   price: {
     fontSize: 18,
     fontWeight: 'bold',
-    color: '#2DD4BF',
+    color: '#FFD700', // Warm yellow for price
   },
   button: {
-    backgroundColor: '#2DD4BF',
+    backgroundColor: '#FFD700', // Yellow button
     paddingHorizontal: 15,
     paddingVertical: 8,
     borderRadius: 20,
   },
   buttonText: {
-    color: 'white',
+    color: '#2A2A2A', // Dark text for button
     fontWeight: 'bold',
     fontSize: 14,
   },

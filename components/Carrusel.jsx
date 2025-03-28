@@ -8,10 +8,10 @@ const ITEM_WIDTH = (width - 40) / 2; // Ancho ajustado para 2 columnas
 const ITEM_HEIGHT = 130;
 
 const data = [
-    { id: '1', title: 'Alojamientos', icon: 'home', color: '#6B7280', screen: 'AlojamientosScreen' },
-    { id: '2', title: 'Tours', icon: 'bus', color: '#94DE57', screen: 'ToursScreen' },
-    { id: '3', title: 'Transporte', icon: 'car', color: '#0A61F5', screen: 'TransporteScreen' },
-    { id: '4', title: 'Restaurantes', icon: 'utensils', color: '#23D1D1', screen: 'RestaurantesScreen' },
+    { id: '1', title: 'Alojamientos', icon: 'home', color: '#6B7280', screen: 'Alojamientos' },
+    { id: '2', title: 'Tours', icon: 'bus', color: '#94DE57', screen: 'Tours' },
+    { id: '3', title: 'Transporte', icon: 'car', color: '#0A61F5', screen: 'Transporte' },
+    { id: '4', title: 'Restaurantes', icon: 'utensils', color: '#23D1D1', screen: 'Restaurantes' },
 ];
 
 const Carrusel = () => {
@@ -23,7 +23,7 @@ const Carrusel = () => {
             <FlatList
                 data={data}
                 keyExtractor={(item) => item.id}
-                numColumns={2} // Muestra los items en 2 columnas
+                numColumns={2} 
                 showsVerticalScrollIndicator={false}
                 contentContainerStyle={styles.flatListContainer}
                 renderItem={({ item }) => (
@@ -31,7 +31,7 @@ const Carrusel = () => {
                         style={[styles.card, { backgroundColor: item.color }]}
                         onPress={() => {
                             console.log('Intentando navegar a:', item.screen);
-                            navigation.navigate(item.screen);
+                            navigation.navigate('Main', { screen: item.screen }); // Asegúrate de que las pantallas estén registradas
                         }}
                     >
                         <View style={styles.iconContainer}>

@@ -85,16 +85,16 @@ export default TransporteScreen
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#f5f5f5',
+    backgroundColor: '#121212',  // Fondo oscuro
   },
   header: {
     fontSize: 24,
     fontWeight: 'bold',
     padding: 15,
-    color: '#333',
+    color: '#FFD700',  // Texto blanco
   },
   card: {
-    backgroundColor: 'white',
+    backgroundColor: '#1E1E1E',  // Fondo de las tarjetas oscuro
     marginHorizontal: 15,
     marginBottom: 15,
     borderRadius: 15,
@@ -126,21 +126,22 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     flex: 1,
     marginRight: 10,
+    color: '#FFD700',  // Texto blanco
   },
   typeContainer: {
-    backgroundColor: '#E5E7EB',
+    backgroundColor: '#444',  // Fondo gris oscuro
     paddingHorizontal: 10,
     paddingVertical: 4,
     borderRadius: 12,
   },
   typeText: {
     fontSize: 12,
-    color: '#4B5563',
+    color: '#bbb',  // Texto gris claro
     fontWeight: '500',
   },
   description: {
     fontSize: 14,
-    color: '#444',
+    color: '#ccc',  // Texto gris claro
     lineHeight: 20,
     marginBottom: 10,
   },
@@ -150,7 +151,7 @@ const styles = StyleSheet.create({
     marginBottom: 10,
   },
   featureTag: {
-    backgroundColor: '#f0f0f0',
+    backgroundColor: '#333',  // Fondo oscuro para las etiquetas
     paddingHorizontal: 10,
     paddingVertical: 5,
     borderRadius: 15,
@@ -159,7 +160,7 @@ const styles = StyleSheet.create({
   },
   featureText: {
     fontSize: 12,
-    color: '#666',
+    color: '#bbb',  // Texto gris claro
   },
   footerContainer: {
     flexDirection: 'row',
@@ -176,7 +177,7 @@ const styles = StyleSheet.create({
   },
   duration: {
     fontSize: 12,
-    color: '#666',
+    color: '#bbb',  // Texto gris claro
     marginTop: 2,
   },
   button: {

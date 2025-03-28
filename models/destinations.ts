@@ -12,6 +12,33 @@ const destinations = [
         reviews: {
             rating: 5,
             totalReviews: 115,
+            reviews: [
+                {
+                    username: 'Carlos G.',
+                    review: '¡Excelente servicio! Muy puntual y el vehículo muy cómodo.',
+                    rating: 5,
+                },
+                {
+                    username: 'Ana L.',
+                    review: 'Buen servicio, aunque la espera fue un poco larga.',
+                    rating: 4,
+                },
+                {
+                    username: "Juan M.",
+                    review: "El conductor fue muy amable, pero el coche no estaba tan limpio como esperaba.",
+                    rating: 3,
+                },
+                {
+                    username: "Laura S.",
+                    review: "Me encantó el servicio, ¡definitivamente lo volveré a usar!",
+                    rating: 5,
+                },
+                {
+                    username: "Pedro R.",
+                    review: "No estuvo mal, pero la app podría mejorar la información de los horarios.",
+                    rating: 3,
+                },
+            ],
         },
         extraImages: [
             require("../assets/images/machu1.jpg"),
@@ -46,6 +73,33 @@ const destinations = [
         reviews: {
             rating: 4.5,
             totalReviews: 98,
+            reviews: [
+                {
+                    username: 'Carlos G.',
+                    review: '¡Excelente servicio! Muy puntual y el vehículo muy cómodo.',
+                    rating: 5,
+                },
+                {
+                    username: 'Ana L.',
+                    review: 'Buen servicio, aunque la espera fue un poco larga.',
+                    rating: 4,
+                },
+                {
+                    username: "Juan M.",
+                    review: "El conductor fue muy amable, pero el coche no estaba tan limpio como esperaba.",
+                    rating: 3,
+                },
+                {
+                    username: "Laura S.",
+                    review: "Me encantó el servicio, ¡definitivamente lo volveré a usar!",
+                    rating: 5,
+                },
+                {
+                    username: "Pedro R.",
+                    review: "No estuvo mal, pero la app podría mejorar la información de los horarios.",
+                    rating: 3,
+                },
+            ],
         },
         flights: [
             {

@@ -60,16 +60,17 @@ const styles = StyleSheet.create({
     container: {
         paddingHorizontal: 20,
         flex: 1,
+        backgroundColor: "#121212", // Fondo oscuro
     },
     sectionTitle: {
         fontSize: 18,
         fontWeight: "bold",
-        color: "#444",
+        color: "#FFFFFF", // Texto blanco para el título
         marginBottom: 8,
     },
     description: {
         fontSize: 16,
-        color: "#333",
+        color: "#E0E0E0", // Texto gris claro
         textAlign: "justify",
         lineHeight: 24,
         marginBottom: 10,
@@ -82,10 +83,12 @@ const styles = StyleSheet.create({
         height: 80,
         borderRadius: 8,
         marginRight: 10,
+        borderWidth: 1,
+        borderColor: "#444", // Bordes sutiles para las imágenes
     },
     modalContainer: {
         flex: 1,
-        backgroundColor: "rgba(0,0,0,0.8)",
+        backgroundColor: "rgba(0,0,0,0.8)", // Fondo oscuro para el modal
         justifyContent: "center",
         alignItems: "center",
     },
@@ -99,7 +102,7 @@ const styles = StyleSheet.create({
         position: "absolute",
         top: 40,
         right: 20,
-        backgroundColor: "white",
+        backgroundColor: "#FFFFFF", // Fondo blanco para el botón de cierre
         borderRadius: 20,
         padding: 8,
         elevation: 5,
@@ -107,6 +110,6 @@ const styles = StyleSheet.create({
     closeText: {
         fontSize: 20,
         fontWeight: "bold",
-        color: "#000",
+        color: "#000", // Texto negro para el botón de cierre
     },
 });
