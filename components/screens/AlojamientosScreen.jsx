@@ -83,16 +83,16 @@ export default AlojamientosScreen
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#f5f5f5',
+    backgroundColor: '#121212', // Fondo oscuro
   },
   header: {
     fontSize: 24,
     fontWeight: 'bold',
     padding: 15,
-    color: '#333',
+    color: '#FFD700', // Amarillo cálido
   },
   card: {
-    backgroundColor: 'white',
+    backgroundColor: '#1E1E1E', // Fondo oscuro para las tarjetas
     marginHorizontal: 15,
     marginBottom: 15,
     borderRadius: 15,
@@ -109,6 +109,8 @@ const styles = StyleSheet.create({
   image: {
     width: '100%',
     height: 180,
+    borderTopLeftRadius: 15,
+    borderTopRightRadius: 15,
   },
   infoContainer: {
     padding: 15,
@@ -124,6 +126,7 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     flex: 1,
     marginRight: 10,
+    color: '#FFF', // Título en blanco
   },
   ratingContainer: {
     flexDirection: 'row',
@@ -131,12 +134,12 @@ const styles = StyleSheet.create({
   },
   location: {
     fontSize: 14,
-    color: '#666',
+    color: '#BDBDBD', // Gris claro para ubicación
     marginBottom: 8,
   },
   description: {
     fontSize: 14,
-    color: '#444',
+    color: '#DDD', // Gris para la descripción
     lineHeight: 20,
     marginBottom: 10,
   },
@@ -146,7 +149,7 @@ const styles = StyleSheet.create({
     marginBottom: 10,
   },
   featureTag: {
-    backgroundColor: '#f0f0f0',
+    backgroundColor: '#333', // Fondo gris oscuro para las características
     paddingHorizontal: 10,
     paddingVertical: 5,
     borderRadius: 15,
@@ -155,7 +158,7 @@ const styles = StyleSheet.create({
   },
   featureText: {
     fontSize: 12,
-    color: '#666',
+    color: '#FFD700', // Amarillo cálido para las características
   },
   priceContainer: {
     flexDirection: 'row',
@@ -165,17 +168,6 @@ const styles = StyleSheet.create({
   price: {
     fontSize: 18,
     fontWeight: 'bold',
-    color: '#2DD4BF',
+    color: '#2DD4BF', // Verde claro para el precio
   },
-  button: {
-    backgroundColor: '#2DD4BF',
-    paddingHorizontal: 15,
-    paddingVertical: 8,
-    borderRadius: 20,
-  },
-  buttonText: {
-    color: 'white',
-    fontWeight: 'bold',
-    fontSize: 14,
-  },
-})
+});
