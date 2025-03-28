@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import { ActivityIndicator, View } from 'react-native';
+import { ActivityIndicator, View, Animated, Easing, Text } from 'react-native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
-import { NavigationContainer } from '@react-navigation/native';
-
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { NavigationContainer, useTheme, useFocusEffect } from '@react-navigation/native';
 import { Ionicons } from '@expo/vector-icons';
+import { LinearGradient } from 'expo-linear-gradient';
 
 import HomeScreen from '../app/views/HomeScreen';
 import AlojamientosScreen from '../components/screens/AlojamientosScreen';
@@ -24,83 +24,83 @@ export type StackParamList = {
   TransporteScreen: undefined;
   RestaurantesScreen: undefined;
   TourDetail: undefined;
-  Perfil: undefined;
 };
 
-// Crear Stack Navigator
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
 
+const AnimatedTabScreen: React.FC<{ component: React.ComponentType }> = ({ component: Component }) => {
+  const [fadeAnim] = useState(new Animated.Value(0));
+
+  useFocusEffect(
+    React.useCallback(() => {
+      Animated.timing(fadeAnim, {
+        toValue: 1,
+        duration: 500,
+        easing: Easing.out(Easing.exp),
+        useNativeDriver: true,
+      }).start();
+
+      return () => fadeAnim.setValue(0);
+    }, [fadeAnim])
+  );
+
+  return (
+    <Animated.View style={{ flex: 1, opacity: fadeAnim }}>
+      <Component />
+    </Animated.View>
+  );
+};
 
 const BottomTabsNavigator = () => {
+  const { colors } = useTheme();
+
   return (
     <Tab.Navigator
       screenOptions={({ route }) => ({
         tabBarIcon: ({ color, size }) => {
           let iconName;
+          switch (route.name) {
+            case 'Inicio': iconName = 'home-outline'; break;
+            case 'Alojamientos': iconName = 'bed-outline'; break;
+            case 'Tours': iconName = 'map-outline'; break;
+            case 'Restaurantes': iconName = 'restaurant-outline'; break;
+            case 'Perfil': iconName = 'person-outline'; break;
 
-          if (route.name === 'Inicio') {
-            iconName = 'home-outline';
-          } else if (route.name === 'Alojamientos') {
-            iconName = 'bed-outline';
-          } else if (route.name === 'Tours') {
-            iconName = 'map-outline';
-          } else if (route.name === 'Transporte') {
-            iconName = 'car-outline';
-          } else if (route.name === 'Restaurantes') {
-            iconName = 'restaurant-outline';
-          } else if (route.name === 'Perfil') {
-            iconName = 'person-outline';
           }
-
           return <Ionicons name={iconName as any} size={size} color={color} />;
         },
         tabBarActiveTintColor: '#FFD700',
         tabBarInactiveTintColor: 'gray',
-        headerShown: false, // Ocultar encabezado en tabs
+        tabBarStyle: {
+          backgroundColor: '#1C1C1C',
+          borderTopWidth: 0,
+          elevation: 5,
+          shadowColor: '#000',
+        },
+        tabBarBackground: () => (
+          <LinearGradient
+            colors={['#121212', '#232323']}
+            style={{ flex: 1 }}
+          />
+        ),
+        headerShown: false,
       })}
     >
-      <Tab.Screen name="Inicio" component={HomeScreen} />
-      <Tab.Screen name="Alojamientos" component={AlojamientosScreen} />
-      <Tab.Screen name="Tours" component={ToursScreen} />
-      <Tab.Screen name="Transporte" component={TransporteScreen} />
-      <Tab.Screen name="Restaurantes" component={RestaurantesScreen} />
-      <Tab.Screen name="Perfil" component={LoginScreen} />
+      <Tab.Screen name="Inicio" component={() => <AnimatedTabScreen component={HomeScreen} />} />
+      <Tab.Screen name="Alojamientos" component={() => <AnimatedTabScreen component={AlojamientosScreen} />} />
+      <Tab.Screen name="Tours" component={() => <AnimatedTabScreen component={ToursScreen} />} />
+      <Tab.Screen name="Restaurantes" component={() => <AnimatedTabScreen component={RestaurantesScreen} />} />
+      <Tab.Screen name="Perfil" component={() => <AnimatedTabScreen component={LoginScreen} />} />
+
     </Tab.Navigator>
   );
 };
 
-
-const StackNavigator = () => {
-  return (
-
-    <Stack.Navigator initialRouteName="OnboardingScreen">
-
-      <Stack.Screen
-        name="OnboardingScreen"
-        component={OnboardingScreen}
-        options={{ headerShown: false }}
-      />
-      <Stack.Screen
-        name="Home"
-        component={HomeScreen}
-        options={{ headerShown: false }}
-      />
-      <Stack.Screen name="AlojamientosScreen" component={AlojamientosScreen} />
-      <Stack.Screen name="ToursScreen" component={ToursScreen} />
-      <Stack.Screen name="TransporteScreen" component={TransporteScreen} />
-      <Stack.Screen name="RestaurantesScreen" component={RestaurantesScreen} />
-      <Stack.Screen name="TourDetail" component={TourDetail} />
-    </Stack.Navigator>
-
-  );
-};
-
-
-
 const AppNavigator = () => {
   const [loading, setLoading] = useState(true);
   const [onboardingSeen, setOnboardingSeen] = useState(false);
+  const { colors } = useTheme();
 
   useEffect(() => {
     const checkOnboardingStatus = async () => {
@@ -108,30 +108,32 @@ const AppNavigator = () => {
       setOnboardingSeen(seen === 'true');
       setLoading(false);
     };
-
     checkOnboardingStatus();
   }, []);
 
   if (loading) {
     return (
-      <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-        <ActivityIndicator size="large" color="#0000ff" />
+      <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center', backgroundColor: colors.background }}>
+        <ActivityIndicator size="large" color="#FFD700" />
+        <Text style={{ color: colors.text, marginTop: 10 }}>Cargando...</Text>
       </View>
     );
   }
+
   return (
-    <Stack.Navigator initialRouteName={onboardingSeen ? 'Main' : 'OnboardingScreen'}>
-      <Stack.Screen name="AlojamientosScreen" component={AlojamientosScreen} />
-      <Stack.Screen name="ToursScreen" component={ToursScreen} />
-      <Stack.Screen name="TransporteScreen" component={TransporteScreen} />
-      <Stack.Screen name="RestaurantesScreen" component={RestaurantesScreen} />
-      <Stack.Screen name="OnboardingScreen" component={OnboardingScreen} options={{ headerShown: false }} />
-      <Stack.Screen name="Main" component={BottomTabsNavigator} options={{ headerShown: false }} />
+    <Stack.Navigator
+      initialRouteName={onboardingSeen ? 'Main' : 'OnboardingScreen'}
+      screenOptions={{
+        animation: 'fade_from_bottom',
+        gestureEnabled: true,
+        headerShown: false,
+      }}
+    >
+      <Stack.Screen name="OnboardingScreen" component={OnboardingScreen} />
+      <Stack.Screen name="Main" component={BottomTabsNavigator} />
       <Stack.Screen name="TourDetail" component={TourDetail} />
-      <Stack.Screen name="Perfil" component={LoginScreen} options={{ headerShown: false }} />
     </Stack.Navigator>
   );
 };
-
 
 export default AppNavigator;

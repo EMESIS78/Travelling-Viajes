@@ -91,16 +91,16 @@ export default RestaurantesScreen
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#f5f5f5',
+    backgroundColor: '#121212',  // Dark background
   },
   header: {
     fontSize: 24,
     fontWeight: 'bold',
     padding: 15,
-    color: '#333',
+    color: '#FFD700',  // White text for header
   },
   card: {
-    backgroundColor: 'white',
+    backgroundColor: '#1F1F1F',  // Dark card background
     marginHorizontal: 15,
     marginBottom: 15,
     borderRadius: 15,
@@ -132,18 +132,19 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     flex: 1,
     marginRight: 10,
+    color: '#FFD700',  // White text for title
   },
   ratingContainer: {
     flexDirection: 'row',
     alignItems: 'center',
-    backgroundColor: '#FFF9E6',
+    backgroundColor: '#333',  // Slightly dark background for rating
     paddingHorizontal: 8,
     paddingVertical: 4,
     borderRadius: 12,
   },
   rating: {
     fontSize: 12,
-    color: '#FFB800',
+    color: '#FFD700',  // Gold color for rating
     fontWeight: 'bold',
     marginLeft: 4,
   },
@@ -155,17 +156,17 @@ const styles = StyleSheet.create({
   },
   tipo: {
     fontSize: 14,
-    color: '#666',
+    color: '#aaa',  // Lighter gray for type
     fontStyle: 'italic',
   },
   precio: {
     fontSize: 14,
-    color: '#2DD4BF',
+    color: '#2DD4BF',  // Green price
     fontWeight: '500',
   },
   description: {
     fontSize: 14,
-    color: '#444',
+    color: '#ccc',  // Light gray for description
     lineHeight: 20,
     marginBottom: 10,
   },
@@ -175,7 +176,7 @@ const styles = StyleSheet.create({
     marginBottom: 10,
   },
   featureTag: {
-    backgroundColor: '#f0f0f0',
+    backgroundColor: '#333',  // Dark background for feature tags
     paddingHorizontal: 10,
     paddingVertical: 5,
     borderRadius: 15,
@@ -184,7 +185,7 @@ const styles = StyleSheet.create({
   },
   featureText: {
     fontSize: 12,
-    color: '#666',
+    color: '#fff',  // White text for feature tags
   },
   footerContainer: {
     flexDirection: 'row',
@@ -197,7 +198,7 @@ const styles = StyleSheet.create({
   },
   horario: {
     fontSize: 12,
-    color: '#666',
+    color: '#aaa',  // Light gray for schedule
     marginLeft: 4,
   },
   button: {
@@ -207,7 +208,7 @@ const styles = StyleSheet.create({
     borderRadius: 20,
   },
   buttonText: {
-    color: 'white',
+    color: '#fff',  // White text for button
     fontWeight: 'bold',
     fontSize: 14,
   },

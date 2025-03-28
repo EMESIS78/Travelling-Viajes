@@ -6,8 +6,6 @@ import { NavigationProp, useNavigation } from "@react-navigation/native";
 import { AntDesign } from "@expo/vector-icons";
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
-
-
 const { width, height } = Dimensions.get("window");
 
 const slides = [
@@ -35,21 +33,39 @@ const OnboardingScreen = () => {
   const [activeSlide, setActiveSlide] = useState(0);
   const navigation = useNavigation<NavigationProp<{ Main: undefined }>>();
 
+  const handleNextSlide = () => {
+    if (activeSlide < slides.length - 1) {
+      setActiveSlide(activeSlide + 1);
+    }
+  };
+
+  const handlePrevSlide = () => {
+    if (activeSlide > 0) {
+      setActiveSlide(activeSlide - 1);
+    }
+  };
+
+  const handleGetStarted = async () => {
+    await AsyncStorage.setItem('onboardingCompleted', 'true');
+    navigation.navigate('Main');
+  };
+
   return (
     <View style={styles.container}>
       <Carousel
         loop
         width={width}
         height={height}
-        autoPlay={true}
-        data={slides}
+        autoPlay
+        autoPlayInterval={3000}
         scrollAnimationDuration={800}
+        data={slides}
         onSnapToItem={(index) => setActiveSlide(index)}
         renderItem={({ item }) => (
           <View style={styles.slide}>
             <Image source={item.image} style={styles.image} />
             <LinearGradient
-              colors={["rgba(0,0,0,0)", "rgba(0,0,0,0.8)"]}
+              colors={["rgba(0,0,0,0)", "rgba(0,0,0,0.9)"]}
               style={styles.gradient}
             />
             <View style={styles.textContainer}>
@@ -60,30 +76,34 @@ const OnboardingScreen = () => {
         )}
       />
 
-      {/* Indicador de página */}
-      <View style={styles.pageIndicator}>
-        <Text style={styles.pageText}>{`${activeSlide + 1}/${slides.length}`}</Text>
+      {/* Indicador de página con puntos dinámicos */}
+      <View style={styles.pagination}>
+        {slides.map((_, index) => (
+          <View
+            key={index}
+            style={[
+              styles.dot,
+              activeSlide === index ? styles.activeDot : styles.inactiveDot,
+            ]}
+          />
+        ))}
       </View>
 
-      {/* Botón "Atrás" */}
-      {activeSlide > 0 && (
-        <TouchableOpacity style={styles.backButton} onPress={() => setActiveSlide(activeSlide - 1)}>
-          <AntDesign name="arrowleft" size={24} color="white" />
-        </TouchableOpacity>
-      )}
-
+      {/* Botones de navegación */}
       <View style={styles.buttonContainer}>
-        
-        {/* Botón "Get Started" visible siempre */}
-        <TouchableOpacity
-          style={styles.button}
-          onPress={async () => {
-            await AsyncStorage.setItem('onboardingCompleted', 'true');
-            navigation.navigate('Main');
-          }}
-        >
-          <Text style={styles.buttonText}>Get Started</Text>
+        {activeSlide > 0 && (
+          <TouchableOpacity style={styles.navButton} onPress={handlePrevSlide}>
+            <AntDesign name="arrowleft" size={24} color="#FFF" />
+          </TouchableOpacity>
+        )}
+        <TouchableOpacity style={styles.getStartedButton} onPress={handleGetStarted}>
+          <Text style={styles.getStartedText}>Get Started</Text>
         </TouchableOpacity>
+        {activeSlide < slides.length - 1 && (
+          <TouchableOpacity style={styles.navButton} onPress={handleNextSlide}>
+            <AntDesign name="arrowright" size={24} color="#FFF" />
+          </TouchableOpacity>
+        )}
       </View>
     </View>
   );
@@ -113,64 +133,63 @@ const styles = StyleSheet.create({
   },
   textContainer: {
     position: "absolute",
-    bottom: 100,
+    bottom: 120,
     width: "80%",
     alignItems: "center",
   },
   title: {
-    fontSize: 28,
+    fontSize: 30,
     fontWeight: "bold",
-    color: "#fff",
+    color: "#FFF",
     textAlign: "center",
+    marginBottom: 10,
   },
   description: {
     fontSize: 16,
-    color: "#ddd",
+    color: "#DDD",
     textAlign: "center",
-    marginTop: 10,
   },
-  pageIndicator: {
+  pagination: {
     position: "absolute",
-    bottom: 160,
-    left: 20,
-    backgroundColor: "rgba(0, 0, 0, 0.5)",
-    paddingHorizontal: 10,
-    paddingVertical: 5,
-    borderRadius: 10,
+    bottom: 140,
+    flexDirection: "row",
+    alignSelf: "center",
   },
-  pageText: {
-    color: "#fff",
-    fontSize: 14,
+  dot: {
+    width: 10,
+    height: 10,
+    borderRadius: 5,
+    marginHorizontal: 5,
   },
-  backButton: {
-    position: "absolute",
-    bottom: 40,
-    left: 20,
-    backgroundColor: "rgba(255, 255, 255, 0.2)",
-    padding: 10,
-    borderRadius: 50,
-  },
-  button: {
-    position: "absolute",
-    bottom: 40,
-    right: 20,
+  activeDot: {
     backgroundColor: "#FFD700",
-    paddingVertical: 12,
-    paddingHorizontal: 30,
-    borderRadius: 25,
   },
-  buttonText: {
-    fontSize: 18,
-    fontWeight: "bold",
-    color: "#000",
+  inactiveDot: {
+    backgroundColor: "#AAA",
   },
   buttonContainer: {
-    flexDirection: "row",
-    justifyContent: "space-between",
     position: "absolute",
     bottom: 40,
     width: "90%",
+    flexDirection: "row",
+    justifyContent: "space-between",
     alignSelf: "center",
+  },
+  navButton: {
+    backgroundColor: "rgba(255, 255, 255, 0.2)",
+    padding: 12,
+    borderRadius: 30,
+  },
+  getStartedButton: {
+    backgroundColor: "#FFD700",
+    paddingVertical: 12,
+    paddingHorizontal: 25,
+    borderRadius: 25,
+  },
+  getStartedText: {
+    fontSize: 18,
+    fontWeight: "bold",
+    color: "#000",
   },
 });
 

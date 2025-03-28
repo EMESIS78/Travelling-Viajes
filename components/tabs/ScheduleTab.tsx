@@ -3,12 +3,14 @@ import { View, Text, StyleSheet } from "react-native";
 
 const ScheduleTab = ({ flights }: { flights: { departure: string; arrival: string }[] }) => {
     return (
-        <View>
+        <View style={styles.container}>
             <Text style={styles.sectionTitle}>Vuelos Disponibles</Text>
             {flights.map((flight, index) => (
-                <Text key={index} style={styles.flightItem}>
-                    ✈ {flight.departure} → {flight.arrival}
-                </Text>
+                <View key={index} style={styles.flightContainer}>
+                    <Text style={styles.flightItem}>
+                        ✈ {flight.departure} → {flight.arrival}
+                    </Text>
+                </View>
             ))}
         </View>
     );
@@ -17,15 +19,25 @@ const ScheduleTab = ({ flights }: { flights: { departure: string; arrival: strin
 export default ScheduleTab;
 
 const styles = StyleSheet.create({
+    container: {
+        flex: 1,
+        padding: 20,
+        backgroundColor: "#121212",
+    },
     sectionTitle: {
-        fontSize: 18,
+        fontSize: 20,
         fontWeight: "bold",
+        color: "#BB86FC",
         marginBottom: 10,
     },
+    flightContainer: {
+        backgroundColor: "#1E1E1E",
+        padding: 15,
+        borderRadius: 10,
+        marginBottom: 8,
+    },
     flightItem: {
-        backgroundColor: "#f9f9f9",
-        padding: 10,
-        borderRadius: 5,
-        marginBottom: 5,
+        fontSize: 16,
+        color: "#E0E0E0",
     },
 });

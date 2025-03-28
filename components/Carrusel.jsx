@@ -1,56 +1,48 @@
-import React, { useRef } from 'react';
-import { View, Text, FlatList, Dimensions, Animated, StyleSheet, TouchableOpacity } from 'react-native';
+import React from 'react';
+import { View, Text, FlatList, Dimensions, StyleSheet, TouchableOpacity } from 'react-native';
 import { FontAwesome5 } from '@expo/vector-icons';
-import { useNavigation, useRoute } from '@react-navigation/native';
-
+import { useNavigation } from '@react-navigation/native';
 
 const { width } = Dimensions.get('window');
-const ITEM_WIDTH = width * 0.4;
-const ITEM_HEIGHT = 130;
+const ITEM_WIDTH = (width - 50) / 2;
+const ITEM_HEIGHT = 150;
 
 const data = [
-    { id: '1', title: 'Alojamientos', icon: 'home', color: '#2DD4BF', screen: 'AlojamientosScreen' },
-    { id: '2', title: 'Tours', icon: 'bus', color: '#A855F7', screen: 'ToursScreen' },
-    { id: '3', title: 'Transporte', icon: 'car', color: '#FACC15', screen: 'TransporteScreen' },
-    { id: '4', title: 'Restaurantes', icon: 'utensils', color: '#EF4444', screen: 'RestaurantesScreen' },
+    { id: '1', title: 'Alojamientos', icon: 'home', color: '#4A5568', screen: 'Alojamientos' },
+    { id: '2', title: 'Tours', icon: 'bus', color: '#38B2AC', screen: 'Tours' },
+    { id: '3', title: 'Transporte', icon: 'car', color: '#3182CE', screen: 'Transporte' },
+    { id: '4', title: 'Restaurantes', icon: 'utensils', color: '#E53E3E', screen: 'Restaurantes' },
 ];
 
-const Carrusel = () => {
-    const scrollX = useRef(new Animated.Value(0)).current;
-    const navigation = useNavigation();
-    const route = useRoute(); 
+// Filtrar Transporte
+const filteredData = data.filter(item => item.title !== 'Transporte');
 
+const Carrusel = () => {
+    const navigation = useNavigation();
+
+    const renderItem = ({ item }) => (
+        <TouchableOpacity
+            style={[styles.card, { backgroundColor: item.color }]}
+            onPress={() => navigation.navigate('Main', { screen: item.screen })}
+            activeOpacity={0.8}
+        >
+            <View style={styles.iconContainer}>
+                <FontAwesome5 name={item.icon} size={30} color="white" />
+            </View>
+            <Text style={styles.title}>{item.title}</Text>
+        </TouchableOpacity>
+    );
 
     return (
         <View style={styles.container}>
             <Text style={styles.header}>Categorías</Text>
             <FlatList
-                data={data}
+                data={filteredData} // Usa la lista filtrada
                 keyExtractor={(item) => item.id}
-                horizontal
-                showsHorizontalScrollIndicator={false}
-                contentContainerStyle={{ paddingHorizontal: 15 }}
-                onScroll={Animated.event(
-                    [{ nativeEvent: { contentOffset: { x: scrollX } } }],
-                    { useNativeDriver: false }
-                )}
-                renderItem={({ item }) => (
-                    <TouchableOpacity
-                        style={[styles.card, { backgroundColor: item.color }]}
-                        onPress={() => {
-                            console.log('Intentando navegar a:', item.screen);
-                            navigation.navigate(item.screen);
-                        }}
-                    >
-                        <View style={styles.iconContainer}>
-                            <FontAwesome5 name={item.icon} size={28} color="white" />
-                        </View>
-                        <Text style={styles.title}>{item.title}</Text>
-                        <View style={styles.footer}>
-                            <Text style={styles.plus}>+4</Text>
-                        </View>
-                    </TouchableOpacity>
-                )}
+                renderItem={renderItem}
+                numColumns={2}
+                showsVerticalScrollIndicator={false}
+                contentContainerStyle={styles.flatListContainer}
             />
         </View>
     );
@@ -60,52 +52,42 @@ export default Carrusel;
 
 const styles = StyleSheet.create({
     container: {
-        marginTop: 20,
+        flex: 1,
+        backgroundColor: '#121212',
+        paddingHorizontal: 15,
     },
     header: {
-        fontSize: 18,
+        fontSize: 20,
         fontWeight: 'bold',
-        marginBottom: 10,
-        marginLeft: 15,
+        color: '#FFFFFF',
+        marginBottom: 15,
+    },
+    flatListContainer: {
+        paddingBottom: 20,
     },
     card: {
         width: ITEM_WIDTH,
         height: ITEM_HEIGHT,
         borderRadius: 15,
         padding: 15,
-        marginHorizontal: 10,
+        margin: 8,
         justifyContent: 'space-between',
         alignItems: 'flex-start',
+        elevation: 4,
         shadowColor: '#000',
         shadowOffset: { width: 0, height: 3 },
-        shadowOpacity: 0.2,
+        shadowOpacity: 0.3,
         shadowRadius: 5,
-        elevation: 5,
-        position: 'relative',
     },
     iconContainer: {
-        backgroundColor: 'rgba(255,255,255,0.3)',
-        padding: 8,
+        backgroundColor: 'rgba(255,255,255,0.2)',
+        padding: 12,
         borderRadius: 10,
+        marginBottom: 10,
     },
     title: {
         fontSize: 16,
-        fontWeight: 'bold',
-        color: 'white',
-        marginTop: 10,
-    },
-    footer: {
-        backgroundColor: 'white',
-        width: '100%',
-        borderBottomLeftRadius: 15,
-        borderBottomRightRadius: 15,
-        paddingVertical: 6,
-        alignItems: 'center',
-        marginTop: 10,
-    },
-    plus: {
-        fontSize: 14,
-        color: '#333',
         fontWeight: '600',
+        color: 'white',
     },
 });
