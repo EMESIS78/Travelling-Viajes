@@ -60,16 +60,28 @@ const styles = StyleSheet.create({
     container: {
         paddingHorizontal: 20,
         flex: 1,
+<<<<<<< Updated upstream
+=======
+        backgroundColor: "#1B1B2F", // Fondo azul profundo para coincidir con PopularTrips
+>>>>>>> Stashed changes
     },
     sectionTitle: {
         fontSize: 18,
         fontWeight: "bold",
+<<<<<<< Updated upstream
         color: "#444",
+=======
+        color: "#E9C46A", // Dorado arena para títulos
+>>>>>>> Stashed changes
         marginBottom: 8,
     },
     description: {
         fontSize: 16,
+<<<<<<< Updated upstream
         color: "#333",
+=======
+        color: "#F4A261", // Naranja atardecer para texto principal
+>>>>>>> Stashed changes
         textAlign: "justify",
         lineHeight: 24,
         marginBottom: 10,
@@ -82,6 +94,11 @@ const styles = StyleSheet.create({
         height: 80,
         borderRadius: 8,
         marginRight: 10,
+<<<<<<< Updated upstream
+=======
+        borderWidth: 1,
+        borderColor: "#E9C46A", // Bordes dorados para coherencia con PopularTrips
+>>>>>>> Stashed changes
     },
     modalContainer: {
         flex: 1,
@@ -99,7 +116,11 @@ const styles = StyleSheet.create({
         position: "absolute",
         top: 40,
         right: 20,
+<<<<<<< Updated upstream
         backgroundColor: "white",
+=======
+        backgroundColor: "#E9C46A", // Botón de cierre en dorado arena
+>>>>>>> Stashed changes
         borderRadius: 20,
         padding: 8,
         elevation: 5,
@@ -107,6 +128,10 @@ const styles = StyleSheet.create({
     closeText: {
         fontSize: 20,
         fontWeight: "bold",
+<<<<<<< Updated upstream
         color: "#000",
+=======
+        color: "#1B1B2F", // Texto azul profundo para contraste con el botón
+>>>>>>> Stashed changes
     },
 });

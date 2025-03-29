@@ -19,6 +19,10 @@ const HomeScreen = () => {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
+<<<<<<< Updated upstream
+=======
+        backgroundColor: '#1B1B2F',
+>>>>>>> Stashed changes
     },
 });
 

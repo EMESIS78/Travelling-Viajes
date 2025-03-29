@@ -63,6 +63,7 @@ const TourDetail = () => {
 export default TourDetail;
 
 const styles = StyleSheet.create({
+<<<<<<< Updated upstream
     container: {flex: 1, backgroundColor: "#fff", padding: 15 },
     image: { width: "100%", height: 250, borderRadius: 10, marginBottom: 15 },
     title: { fontSize: 22, fontWeight: "bold", textAlign: "center" },
@@ -74,6 +75,24 @@ const styles = StyleSheet.create({
     tabText: { fontSize: 16, color: "#666" },
     activeTabText: { color: "#007bff", fontWeight: "bold" },
     tabContent: {flex: 1, paddingHorizontal: 10 },
+=======
+    container: { flex: 1, padding: 15, backgroundColor: "#F5F5F5" },
+    darkContainer: { backgroundColor: "#1B1B2F" },
+    image: { width: "100%", height: 300, borderRadius: 15, marginBottom: 15, alignSelf: "center" },
+    textContainer: { alignItems: "center", marginBottom: 15 },
+    title: { fontSize: 24, fontWeight: "bold", color: "#1B1B2F" },
+    darkText: { color: "#E9C46A" },
+    location: { fontSize: 16, color: "#555", textAlign: "center", marginVertical: 5 },
+    price: { fontSize: 18, fontWeight: "bold", color: "#2A9D8F", textAlign: "center", marginBottom: 15 },
+    darkPrice: { color: "#E76F51" },
+    tabs: { flexDirection: "row", justifyContent: "space-around", borderBottomWidth: 1, borderBottomColor: "#DDD", paddingBottom: 10 },
+    darkTabs: { borderBottomColor: "#444" },
+    tab: { paddingVertical: 12, flex: 1, alignItems: "center" },
+    activeTab: { borderBottomWidth: 3, borderBottomColor: "#264653" },
+    tabText: { fontSize: 16, color: "#666" },
+    activeTabText: { color: "#264653", fontWeight: "bold" },
+    tabContent: { flex: 1, paddingHorizontal: 10 },
+>>>>>>> Stashed changes
     notFoundContainer: { flex: 1, justifyContent: "center", alignItems: "center" },
     notFoundText: { fontSize: 18, color: "red" },
 });

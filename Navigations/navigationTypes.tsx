@@ -15,6 +15,7 @@ import RestaurantesScreen from '../components/screens/RestaurantesScreen';
 import LoginScreen from '../components/screens/LoginScreen';
 import TourDetail from './../components/TourDetail';
 import OnboardingScreen from './../components/OnboardingScreen';
+import { SlideInDown, SlideInLeft } from 'react-native-reanimated';
 
 export type StackParamList = {
   OnboardingScreen: undefined;
@@ -27,10 +28,38 @@ export type StackParamList = {
   Perfil: undefined;
 };
 
-// Crear Stack Navigator
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
 
+<<<<<<< Updated upstream
+=======
+const AnimatedTabScreen: React.FC<{ component: React.ComponentType }> = ({ component: Component }) => {
+  const [fadeAnim] = useState(new Animated.Value(0)); // Iniciar la animación con opacidad 0
+
+  useFocusEffect(
+    React.useCallback(() => {
+      // Iniciar la animación de opacidad cuando la pantalla se enfoca
+      Animated.timing(fadeAnim, {
+        toValue: 1,  // Hacer que la pantalla se vuelva opaca
+        duration: 500, // Duración de la animación
+        useNativeDriver: true, // Usar el controlador nativo para el rendimiento
+      }).start();
+
+      // Resetear la animación al perder el enfoque
+      return () => fadeAnim.setValue(0);
+    }, [fadeAnim])
+  );
+
+  return (
+    <Animated.View style={{ flex: 1, opacity: fadeAnim.interpolate({
+      inputRange: [0, 1],
+      outputRange: [0, 1],
+    }) }}>
+      <Component />
+    </Animated.View>
+  );
+};
+>>>>>>> Stashed changes
 
 const BottomTabsNavigator = () => {
   return (
@@ -57,6 +86,24 @@ const BottomTabsNavigator = () => {
         },
         tabBarActiveTintColor: '#FFD700',
         tabBarInactiveTintColor: 'gray',
+<<<<<<< Updated upstream
+=======
+        tabBarStyle: {
+          position: 'absolute',
+          bottom: 20,
+          left: 20,
+          right: 20,
+          backgroundColor: '#1B1B2F',
+          borderRadius: 20,
+          height: 60,
+          paddingBottom: 10,
+          shadowColor: '#000',
+          shadowOffset: { width: 0, height: 5 },
+          shadowOpacity: 0.1,
+          shadowRadius: 10,
+          elevation: 5,
+        },
+>>>>>>> Stashed changes
         headerShown: false, // Ocultar encabezado en tabs
       })}
     >
